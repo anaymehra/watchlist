@@ -9,7 +9,7 @@ function Home() {
   async function fetchData(pageNumber) {
     const apiKey = import.meta.env.VITE_WATCHLIST_API;
     const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
-    const response = await axios.get("https://api.themoviedb.org/3/movie/popular", {
+    const response = await axios.get("/3/movie/popular", {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,
