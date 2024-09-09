@@ -9,11 +9,10 @@ function Home() {
   async function fetchData(pageNumber) {
     const apiKey = import.meta.env.VITE_WATCHLIST_API;
     const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
-    const API_BASE_URL = import.meta.env.MODE === "development" 
-      ? "/api" 
-      : "https://api.themoviedb.org/3"; // Updated base URL
-  
-    const response = await axios.get(`/api/movie/popular`, {
+    const API_BASE_URL =
+    import.meta.env.MODE === "development" ? "/api" : "https://api.themoviedb.org";
+
+    const response = await axios.get("/api/3/movie/popular", {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,
@@ -24,7 +23,6 @@ function Home() {
     });
     setData(response.data.results);
   }
-  
 
   useEffect(() => {
     fetchData(page);
