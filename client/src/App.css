@@ -1,0 +1,25 @@
+/* styles.css */
+.card-content {
+    max-height: 100px;
+    overflow: auto;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #e0e0e0; /* For Firefox */
+  }
+  
+  /* WebKit-based browsers */
+  .card-content::-webkit-scrollbar {
+    width: 8px; /* Adjust width */
+  }
+  
+  .card-content::-webkit-scrollbar-thumb {
+    background-color: #888; /* Scrollbar color */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .card-content::-webkit-scrollbar-track {
+    background-color: #e0e0e0; /* Track color */
+    border-radius: 4px; /* Rounded corners */
+  }
+  body{
+    background-color: #ffffff;
+  }

@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+logs/
+
+# Temporary files
+*.log
+*.tmp
+
+# Build outputs
+client/build/
+server/build/
