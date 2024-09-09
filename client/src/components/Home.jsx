@@ -12,7 +12,7 @@ function Home() {
     const API_BASE_URL =
     import.meta.env.MODE === "development" ? "/api" : "https://api.themoviedb.org";
 
-    const response = await axios.get("/api/3/movie/popular", {
+    const response = await axios.get("https://api.themoviedb.org/3/movie/popular", {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,

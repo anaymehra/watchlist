@@ -36,12 +36,13 @@ app.get("/movies", async (req, res) => {
 app.delete("/movies/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        const response = await db.query(`DELETE FROM movies WHERE id=${id}`)
-        res.json(response.rows)
+        await db.query("DELETE FROM movies WHERE id=$1", [id]);
+        res.status(204).send(); // Respond with no content
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
+        res.status(500).send(error.message);
     }
-})
+});
 
 
 app.listen(port, () => {
