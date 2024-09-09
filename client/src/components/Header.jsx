@@ -15,11 +15,13 @@ function Header() {
     <header className="w-full bg-gray-900 z-50">
       <nav className="bg-gray-900 p-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4">
+          <img src="./logo.png" alt="" className="w-8"/>
             <Link to="/" className="text-white text-xl font-bold">
+            
               Watchlist
             </Link>
-            <div className="flex space-x-4">
+            <div className="flex space-x-6">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
