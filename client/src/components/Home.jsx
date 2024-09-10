@@ -15,6 +15,8 @@ function Home() {
       : "https://api.themoviedb.org/3/movie/popular";
 
     const response = await fetch(`${API_BASE_URL}?page=${pageNumber}`, {
+      mode: 'no-cors',
+      method: "get",
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,
