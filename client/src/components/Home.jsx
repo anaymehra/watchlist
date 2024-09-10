@@ -6,23 +6,8 @@ function Home() {
   const [page, setPage] = useState(1);
 
   async function fetchData(pageNumber) {
-    const apiKey = import.meta.env.VITE_WATCHLIST_API;
-    const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
-    
-    // Use a different base URL depending on the environment
-    const API_BASE_URL = import.meta.env.MODE === "development" 
-      ? "/api/3/movie/popular" 
-      : "https://api.themoviedb.org/3/movie/popular";
-
-    const response = await fetch(`${API_BASE_URL}?page=${pageNumber}`, {
-      mode: 'no-cors',
-      method: "get",
-      headers: {
-        Authorization: `Bearer ${bearerToken}`,
-        "x-api-key": apiKey,
-      },
-    });
-
+    const response = await fetch(`/api/tmdbProxy?page=${pageNumber}`);
+  
     if (response.ok) {
       const result = await response.json();
       setData(result.results);
