@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "./Card.jsx";
 
@@ -6,22 +7,21 @@ function Home() {
   const [page, setPage] = useState(1);
 
   async function fetchData(pageNumber) {
-    const response = await fetch(`/api/tmdbProxy?page=${pageNumber}`, {
+    const apiKey = import.meta.env.VITE_WATCHLIST_API;
+    const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
+    // const API_BASE_URL =
+    // import.meta.env.MODE === "development" ? "/api" : "https://api.themoviedb.org";
+
+    const response = await axios.get("/api/3/movie/popular", {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,
       },
       params: {
-        page,
+        page: pageNumber,
       },
     });
-  
-    if (response.ok) {
-      const result = await response.json();
-      setData(result.results);
-    } else {
-      console.error("Failed to fetch data");
-    }
+    setData(response.data.results);
   }
 
   useEffect(() => {
