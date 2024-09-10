@@ -6,7 +6,15 @@ function Home() {
   const [page, setPage] = useState(1);
 
   async function fetchData(pageNumber) {
-    const response = await fetch(`/api/tmdbProxy?page=${pageNumber}`);
+    const response = await fetch(`/api/tmdbProxy?page=${pageNumber}`, {
+      headers: {
+        Authorization: `Bearer ${bearerToken}`,
+        "x-api-key": apiKey,
+      },
+      params: {
+        page,
+      },
+    });
   
     if (response.ok) {
       const result = await response.json();
