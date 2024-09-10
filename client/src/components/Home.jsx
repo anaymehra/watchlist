@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "./Card.jsx";
 
@@ -9,19 +8,20 @@ function Home() {
   async function fetchData(pageNumber) {
     const apiKey = import.meta.env.VITE_WATCHLIST_API;
     const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
-    const API_BASE_URL =
-    import.meta.env.MODE === "development" ? "/api" : "https://api.themoviedb.org";
-
-    const response = await axios.get("/api/3/movie/popular", {
+    
+    const response = await fetch(`/api/3/movie/popular?page=${pageNumber}`, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,
       },
-      params: {
-        page: pageNumber,
-      },
     });
-    setData(response.data.results);
+
+    if (response.ok) {
+      const result = await response.json();
+      setData(result.results);
+    } else {
+      console.error("Failed to fetch data");
+    }
   }
 
   useEffect(() => {
