@@ -9,7 +9,7 @@ function Home() {
     const apiKey = import.meta.env.VITE_WATCHLIST_API;
     const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
     
-    const response = await fetch(`/api/3/movie/popular?page=${pageNumber}`, {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/popular?page=${pageNumber}`, {
       headers: {
         Authorization: `Bearer ${bearerToken}`,
         "x-api-key": apiKey,
